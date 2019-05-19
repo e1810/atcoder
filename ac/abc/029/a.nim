@@ -1,1 +1,0 @@
-echo stdin.readline&"s"
