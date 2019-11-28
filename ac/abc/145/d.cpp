@@ -2,12 +2,31 @@
 typedef long long ll;
 using namespace std;
 
+const int MAX = 10000000;
+const int MOD = 1000000007;
 
-ll comb(
+long long fac[MAX], finv[MAX], inv[MAX];
+
+void COMinit() {
+    fac[0] = fac[1] = 1;
+    finv[0] = finv[1] = 1;
+    inv[1] = 1;
+    for (int i = 2; i < MAX; i++){
+        fac[i] = fac[i - 1] * i % MOD;
+        inv[i] = MOD - inv[MOD%i] * (MOD / i) % MOD;
+        finv[i] = finv[i - 1] * inv[i] % MOD;
+    }
+}
+
+long long COM(int n, int k){
+    if (n < k) return 0;
+    if (n < 0 || k < 0) return 0;
+    return fac[n] * (finv[k] * finv[n - k] % MOD) % MOD;
+}
+
 
 int main(){
 	ll x, y;
-	const int MOD = 1e9+7;
 	scanf("%lld %lld", &x, &y);
 
 	if((x+y)%3){
@@ -15,27 +34,9 @@ int main(){
 		return 0;
 	}
 
-	ll ytwo = y/2; ll yone = y%2;
-	while(ytwo>=0){
-		if(ytwo+yone*2 == x) break;
-		ytwo -= 1;
-		yone += 2;
-	}
-
-	/*
-	ll n = 1, p = 1;
-	for(ll i=ytwo+yone; i>max(ytwo, yone); i--){
-		n *= i;
-		n %= MOD;
-	}
-	for(ll i=min(ytwo, yone); i>0; i--){
-		cout << p << endl;
-		p *= i;
-		p %= MOD;
-	}
-	cout << n << " " << p << endl;
-	*/
-	printf("%lld\n", comb(ytwo+yone, yone));
+	COMinit();
+	ll n = (x+y)/3; ll k = (2*y-x)/3;
+	printf("%lld\n", COM(n, k));
 	return 0;
 }
 
