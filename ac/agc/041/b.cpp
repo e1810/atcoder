@@ -9,33 +9,18 @@ int main(){
 	ll a[n];
 	for(ll i=0; i<n; i++) scanf("%lld", &a[i]);
 	sort(a, a+n, greater<ll>());
+	for(ll i=0; i<n; i++) printf("%lld ", a[i]);
 
-	vector<P> b(0);
-	ll prev = a[0], cnt = 0;
-	for(ll i=0; i<n; i++){
-		if(a[i]==prev) cnt++;
-		else{
-			b.push_back({prev, cnt});
-			cnt = 1;
+	ll l=p-1, r=n;
+	while(l-r>1){
+		ll mid = l+(r-l)/2;
+		if(a[p-1]<a[mid]+m){
+			r = mid;
+			continue;
 		}
-		prev = a[i];
+		if((p-1)+(n-mid)>m*v) l = mid;
+		else r = mid;
 	}
-	b.push_back({prev, cnt});
-	
-	ll c[n], i=0;
-	for(P bb: b) c[i++]=b.second;
-	for(ll i=c.size()-1; i>0; i--) c[i-1] += c[i];
-
-	for(P bb: b) printf("%lld %lld\n", bb.first, bb.second);
-
-	ll d=b[0].first, ans=b[0].second;
-	for(ll i=1; i<b.size(); i++){
-		if(b[i-1].first-m == b[i].first){
-			if(d<p) ans += b[i].second;
-			else break;
-		}else{}
-	}
-			
-
+	printf("%lld\n", l);
 	return 0;
 }
