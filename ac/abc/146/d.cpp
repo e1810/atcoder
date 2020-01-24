@@ -7,49 +7,39 @@ int main(){
 	ll n;
 	scanf("%lld", &n);
 	
-	vector<bool> used(n);
-	used[0] = true;
-	
-	vector<P> toans(n-1);
-	vector<vector<ll>> link(n, vector<ll>(0));
-	
-	for(int i=0; i<n-1; i++){
+	vector<vector<int>> link(n, vector<int>(0));
+	for(ll i=0; i<n-1; i++){
 		ll a, b;
 		scanf("%lld %lld", &a, &b);
-		toans[i] = make_pair(a-1, b-1);
 		link[a-1].push_back(b-1);
 		link[b-1].push_back(a-1);
-		used[i+1] = false;
 	}
+	
+	vector<bool> used(n, 0);
+	vector<ll> ans(n);
+	ans[0] = 0;
 
-
-	map<P, ll> ans;
-	queue<P> que;
-	que.push(make_pair(0, 0));
-	ll maxim = 0;
-
+	queue<pair<ll,ll>> que;
+	que.push({0, 0});
+	ll cnt = 1;
 	while(!que.empty()){
-		P tmp = que.front();
-		ll m = tmp.first;
-		ll col = tmp.second;
-		que.pop();
-		
-		ll er = 1;
-		for(ll v: link[m]){
+		pair<ll,ll> tmp = que.front(); que.pop();
+		ll col = tmp.first, apex = tmp.second;
+		used[apex] = true;
+		ll i = 1;
+		for(ll v: link[apex]){
 			if(!used[v]){
-				used[v] = true;
-				if(er==col) er++;
-				ans[make_pair(m,v)] = er;
-				ans[make_pair(v,m)] = er;
-				que.push(make_pair(v, er));
-				maxim = max(maxim, er);
-				er++;
+				if(i == col) i++;
+				ans[v] = i;
+				cnt = max(cnt, i);
+				que.push({i, v});
+				i++;
 			}
 		}
 	}
 
-	printf("%lld\n", maxim);
-	for(P p: toans) printf("%lld\n", ans[p]);
+	printf("%lld\n", cnt);	
+	for(ll i=1; i<n; i++) printf("%lld\n", ans[i]);
 
 	return 0;
 }
