@@ -6,6 +6,7 @@ typedef struct contry{
         int point;
 } Contry;
 
+// function of comparison to sort
 int cmp(const void *a, const void *b){
         return ((Contry *)b)->point -((Contry *)a)->point;
 }
@@ -13,14 +14,14 @@ int cmp(const void *a, const void *b){
 int main(void){
 	int flag = 0;
         while(1){
-                int n;
+                int n, i;
                 scanf("%d", &n);
                 if(n==0) break;
 		if(flag) puts("");
 		else flag = 1;
 
                 Contry contries[n];
-                for(int i=0; i<n; i++){
+                for(i=0; i<n; i++){
                         char name[21];
                         int w, l, d;
                         scanf("%s %d %d %d", contries[i].name, &w, &l, &d);
@@ -28,7 +29,7 @@ int main(void){
                 }
 
                 qsort(contries, n, sizeof(Contry), cmp);
-                for(int i=0; i<n; i++){
+                for(i=0; i<n; i++){
                         printf("%s,%d\n", contries[i].name, contries[i].point);
                 }
         }
