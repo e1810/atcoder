@@ -4,24 +4,21 @@ int main(){
 	std::string s;
 	std::cin >> s;
 
-	int l = s.size();
-	long long ans = 0;
-	for(int i=0; i<pow(2,(l-1)); i++){
-		long long summa = 0, kou = s[0] - '0';
-		for(int j=0; j<l-1; j++){
+	long ans=0, l=s.size()-1;
+	for(int i=0; i<(1<<l); i++){
+		long sm = 0, kou = s[0] - '0';
+		for(int j=0; j<l; j++){
 			if((i>>j)&1){
-				summa += kou;
+				sm += kou;
 				kou = (s[j+1]-'0');
 			}else{
 				kou *= 10;
 				kou += s[j+1]-'0';
 			}
 		}
-		summa += kou;
-		//printf("%lld\n", summa);
-		ans += summa;
+		ans += sm+kou;
 	}
-	printf("%lld\n", ans);
+	printf("%ld\n", ans);
 	return 0;
 }
 
