@@ -1,5 +1,10 @@
 #include<bits/stdc++.h>
 using ll = long long;
+using P = std::pair<ll,ll>;
+
+bool cmp(P a, P b){
+	return a.second>b.second;
+}
 
 int main(){
 	ll n, m;
@@ -11,25 +16,28 @@ int main(){
 		que.push(tmp);
 	}
 
-	for(ll i=0; i<m; i++){
-		ll b, c;
-		scanf("%lld %lld", &b, &c);
+	std::vector<P> bc(m);
+	for(ll i=0; i<m; i++) scanf("%lld %lld", &bc[i].first, &bc[i].second);
+	std::sort(bc.begin(), bc.end(), cmp);
 
-		for(ll j=0; j<b; j++){
+	ll ans = 0;
+	for(ll i=0; i<m; i++){
+		for(ll j=0; j<bc[i].first; j++){
 			ll tmp = que.top(); que.pop();
-			if(tmp<c) que.push(c);
-			else{
-				que.push(tmp);
-				break;
+			if(tmp>bc[i].second){
+				ans += tmp;
+				goto outer;
 			}
+			ans += bc[i].second;
+			if(que.empty()) goto outer;
 		}
 	}
-
-	ll sm = 0;
-	for(ll i=0; i<n; i++){
-		sm += que.top();
+	
+	outer:
+	while(!que.empty()){
+		ans += que.top();
 		que.pop();
 	}
-	printf("%lld\n", sm);
+	printf("%lld\n", ans);
 	return 0;
 }
