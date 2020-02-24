@@ -1,7 +1,7 @@
 ifdef m
-	MESSAGE=m
+	MESSAGE=${m}
 else
-	MESSAGE="push from makefile"
+	MESSAGE=push from makefile
 endif
 
 push:
