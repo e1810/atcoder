@@ -9,6 +9,3 @@ push:
 	git commit -m"${MESSAGE}"
 	git pull origin master
 	git push origin master
-	e1810
-	baukokekoke0405
-
