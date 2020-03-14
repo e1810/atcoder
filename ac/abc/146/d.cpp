@@ -1,45 +1,51 @@
 #include<bits/stdc++.h>
 using namespace std;
-typedef long long ll;
-typedef pair<ll, ll> P;
+using ll = int_fast64_t;
+using P = pair<ll,ll>;
 
 int main(){
 	ll n;
-	scanf("%lld", &n);
-	
-	vector<vector<int>> link(n, vector<int>(0));
+	scanf("%ld", &n);
+	vector<vector<ll>> link(n, vector<ll>(0));
+	vector<P> edges(n-1);
 	for(ll i=0; i<n-1; i++){
-		ll a, b;
-		scanf("%lld %lld", &a, &b);
-		link[a-1].push_back(b-1);
-		link[b-1].push_back(a-1);
+		scanf("%ld %ld", &edges[i].first, &edges[i].second);
+		link[edges[i].first-1].push_back(edges[i].second-1);
+		link[edges[i].second-1].push_back(edges[i].first-1);
 	}
-	
-	vector<bool> used(n, 0);
-	vector<ll> ans(n);
-	ans[0] = 0;
 
-	queue<pair<ll,ll>> que;
-	que.push({0, 0});
-	ll cnt = 1;
+	vector<ll> used(n,0);
+	ll ansc = 1;
+	map<P, ll> ans;
+
+	queue<P> que;
+	que.push(P(0,0));
 	while(!que.empty()){
-		pair<ll,ll> tmp = que.front(); que.pop();
-		ll col = tmp.first, apex = tmp.second;
-		used[apex] = true;
-		ll i = 1;
-		for(ll v: link[apex]){
+		ll here, color;
+		tie(here, color) = que.front();
+		que.pop();
+
+		ansc = max(ansc, color);
+		used[here] = 1;
+
+		ll i=1;
+		for(ll v: link[here]){
 			if(!used[v]){
-				if(i == col) i++;
-				ans[v] = i;
-				cnt = max(cnt, i);
-				que.push({i, v});
+				if(color==i) i++;
+				que.push(P(v, i));
+				ans[P(min(here,v)+1,max(here,v)+1)] = i;
 				i++;
 			}
 		}
 	}
 
-	printf("%lld\n", cnt);	
-	for(ll i=1; i<n; i++) printf("%lld\n", ans[i]);
-
+	printf("%ld\n", ansc);
+	for(P p: edges){
+		printf("%ld\n", ans[p]);
+	}
 	return 0;
 }
+
+
+
+
