@@ -6,6 +6,6 @@ endif
 
 push:
 	git add -A
+	ac/.submissioncrawler.sh
 	git commit -m"${MESSAGE}"
 	git push origin HEAD
-	ac/.submissioncrawler.sh
