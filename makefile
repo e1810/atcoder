@@ -5,7 +5,7 @@ else
 endif
 
 push:
-	ac/.submissioncrawler.sh
 	git add -A
 	git commit -m"${MESSAGE}"
 	git push origin HEAD
+	ac/.submissioncrawler.sh
