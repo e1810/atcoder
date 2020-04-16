@@ -1,0 +1,4 @@
+
+s = input()
+if s in ("KIHBR", "KIHBRA", "KIHBAR", "KIHBARA", "KIHABR", "KIHABRA", "KIHABAR", "KIHABARA", "AKIHBR", "AKIHBRA", "AKIHBAR", "AKIHBARA", "AKIHABR", "AKIHABRA", "AKIHABAR", "AKIHABARA"): print("YES")
+else: print("NO")
