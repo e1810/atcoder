@@ -6,4 +6,4 @@ layout: default
 parmalink: /
 ---
 
-:(
+<h1> {{ site.title }} </h1>
