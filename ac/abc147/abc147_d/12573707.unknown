@@ -1,0 +1,15 @@
+MOD = 1000000007
+n, *a = map(int, open(0).read().split())
+
+ans = 0
+w = 1
+for i in range(61):
+    zero = one = 0
+    for j in range(n):
+        if a[j]&1: one += 1
+        else: zero += 1
+        a[j] >>= 1;
+    ans += w * zero * one
+    ans %= MOD
+    w = w * 2 % MOD
+print(ans)
