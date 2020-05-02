@@ -13,14 +13,14 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Luzhiled's memo
+title: y61mpnl's memo
 description: >- # this means to ignore newlines until "baseurl:"
-  C++による競技プログラミングのライブラリです
-author: ei13333
-baseurl: "/luzhiled" # the subpath of your site, e.g. /blog
-url: "https://ei1333.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: ei13333
-github_username:  ei1333
+  AC_history
+author: y61mpnl
+baseurl: "/" # the subpath of your site, e.g. /blog
+url: "https://e1810.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: Vanilla1810
+github_username:  e1810
 theme: minima
 # Build settings
 markdown: kramdown
@@ -30,8 +30,10 @@ plugins:
   - jekyll-seo-tag
 timezone: Asia/Tokyo
 
-permalink: none
+parmalink: none
 
 collections:
+  includes:
+    output: true
   snippets:
     output: true

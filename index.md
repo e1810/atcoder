@@ -3,23 +3,20 @@
 # Edit theme's home layout instead if you wanna make some changes
 # See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 layout: home
+title: AC history
+parmalink: /
 ---
+
+
 <style>
 ul li p {
   margin-bottom: 0.25em;
 }
 </style>
 
-ぽよぽよぷりん
+AC_history
 
-ここにのっているソースコードは自由に使って頂いて構いませんが、バグっている可能性があります。よく使いそうなライブラリほど信頼度が高めです。
-
-{% assign mydocs = site.snippets | group_by: 'category' %}
-{% for cat in mydocs %}
-## {{ cat.name }}
-  {% assign items = cat.items | sort: 'title' %}
-  {% for item in items %}
-* [{{item.title}}]({{ item.url | relative_url }})
-  {% endfor %}
+{% for cpsite in site.includes.kyopro %}
+	##{{ cpsite.name }}
 {% endfor %}
 
