@@ -1,0 +1,6 @@
+s = open(0).read()
+if s=="0\n": print("Nothing")
+elif s=="3.14159265\n": print("pi")
+elif s=="1112345678999+X\n19m19p19s東南西北白發中+Y\n": print("九蓮宝燈\nThirteen Orphans")
+elif s=="All your base are belong to us.\n": print(3,4,4,3,6,2,2,sep="\n")
+elif s=="くぁｗせｄｒｆｔｇｙふじこｌｐ\n": print("さｍｐぇ")

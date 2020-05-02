@@ -12,11 +12,13 @@ parmalink: /
 ul li p {
   margin-bottom: 0.25em;
 }
+
 </style>
 
 AC_history
 
-{% for cpsite in site.includes.kyopro %}
-	##{{ cpsite.name }}
+<ul>
+{% for pg in site.cpsites %}
+  <li><a href="{{ pg.url | relative_url }}" style="font-weight:bold;font-size:3vw;">{{ pg.name }}</a></li>
 {% endfor %}
-
+</ul>

@@ -33,7 +33,7 @@ timezone: Asia/Tokyo
 parmalink: none
 
 collections:
-  includes:
+  cpsites:
     output: true
-  snippets:
+  kyopro:
     output: true

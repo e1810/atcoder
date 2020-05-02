@@ -1,0 +1,2 @@
+
+echo stdin.readline&"pp"
