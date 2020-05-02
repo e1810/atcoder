@@ -1,9 +1,3 @@
-<<<<<<< HEAD
 [submodule "kyopro"]
 	path = kyopro
 	url = https://e1810:baukokekoke0405@github.com/e1810/kyopro.git
-=======
-[submodule "_includes/library"]
-	path = _includes/library
-	url = https://github.com/ei1333/library.git
->>>>>>> 634d595e079e03a7d54e69379233e3c5026b3a3b
