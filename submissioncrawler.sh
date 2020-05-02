@@ -95,6 +95,5 @@ if [$# -e 1]; then
 else
 	git commit -m"auto-commit"
 fi
-git push origin HEAD-${count}
-
+git push origin master
 
