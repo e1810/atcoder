@@ -1,0 +1,32 @@
+use proconio::{input, fastout};
+use std::cmp;
+
+fn dfs(n:i64, m:i64, query:&Vec<(usize,usize,i64,i64)>, v:&mut Vec<i64>, max:i64) -> i64 {
+    if n>0 {
+        let mut ret = 0;
+        for i in max..=m {
+            v.push(i);
+            ret = cmp::max(ret, dfs(n-1, m, query, v, i));
+            v.pop();
+        }
+        return ret;
+    } else {
+        let mut ret = 0;
+        for (a, b, c, d) in query {
+            if v[b-1]-v[a-1]==*c {
+                ret += d;
+            }
+        }
+        return ret;
+    }
+}
+    
+
+#[fastout]
+fn main() {
+    input! {
+        (n, m, q): (i64, i64, i64),
+        query: [(usize,usize,i64,i64); q],
+    }
+    println!("{}", dfs(n, m, &query, &mut Vec::new(), 1));
+}
