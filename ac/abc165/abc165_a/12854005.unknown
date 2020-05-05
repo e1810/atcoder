@@ -1,0 +1,11 @@
+use proconio::{input, fastout};
+
+#[fastout]
+fn main() {
+    input! {
+        k: i32,
+        (a, b): (i32, i32),
+    }
+    if b/k>(a-1)/k{ println!("OK"); }
+    else { println!("NG"); }
+}
