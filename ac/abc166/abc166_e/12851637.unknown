@@ -1,0 +1,22 @@
+use proconio::{input, fastout};
+
+#[fastout]
+fn main() {
+    input! {
+        n: usize,
+        a: [usize; n],
+    }
+
+    let mut x = vec![0; n];
+    let mut ans: usize = 0;
+    for i in 0..n {
+        let ai = a[i];
+        if i+ai<n {
+            x[i+ai] += 1;
+        }
+        if i>=ai {
+            ans += x[i-ai];
+        }
+    }
+    println!("{}", ans);
+}
