@@ -1,0 +1,13 @@
+use proconio::{input, fastout};
+
+fn f(x:i64, a:i64, b:i64) -> i64 {
+    return (a*x)/b - a*(x/b);
+}
+
+#[fastout]
+fn main() {
+    input! {
+        (a, b, n): (i64, i64, i64),
+    }
+    println!("{}", f(std::cmp::min(n, b-1), a, b));
+}
