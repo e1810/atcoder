@@ -1,0 +1,15 @@
+n, k, *a = map(int, open(0).read().split())
+now = 0
+st = set()
+ls = []
+while not now in st:
+    st.add(now)
+    ls.append(now)
+    now = a[now]-1
+bi = ls.index(now)
+lp = len(ls) - bi
+if k<=bi: print(ls[k]+1)
+else:
+    k -= bi
+    k %= lp
+    print(ls[bi+k]+1)
