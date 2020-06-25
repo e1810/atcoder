@@ -1,0 +1,14 @@
+use proconio::{input, fastout};
+
+#[fastout]
+fn main() {
+    input! {
+        (x, a, b): (i32, i32, i32)
+    }
+
+    if (x-a).abs()<(x-b).abs() {
+        println!("A");
+    } else {
+        println!("B");
+    }
+}
