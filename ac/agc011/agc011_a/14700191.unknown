@@ -1,0 +1,35 @@
+use proconio::{input, fastout};
+
+#[fastout]
+fn main() {
+    input! {
+        (n, c, k): (i64, i64, i64),
+        mut t: [i64; n]
+    }
+    t.sort();
+
+    let mut ely: i64 = 1000000001;
+    let mut cnt = 0;
+    let mut ans = 0;
+    for x in t {
+        if x>ely+k {
+            ans += 1;
+            cnt = 0
+        }
+
+        if cnt==0 {
+            ely = x;
+        }
+        cnt += 1;
+
+        if cnt==c {
+            ans += 1;
+            cnt = 0;
+            ely = 1000000001;
+        }
+    }
+    if cnt>0 {
+        ans += 1;
+    }
+    println!("{}", ans);
+}
