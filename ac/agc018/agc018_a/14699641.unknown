@@ -1,0 +1,25 @@
+use proconio::{input, fastout};
+use num::integer::gcd;
+
+#[fastout]
+fn main() {
+    input! {
+        (n, k): (usize, i64),
+        a: [i64; n]
+    }
+    
+    let mut g: i64 = 0;
+    let mut over = false;
+    for i in 0..n {
+        g = gcd(g, a[i]);
+        if a[i]>=k {
+            over = true;
+        }
+    }
+
+    if k%g==0 && over {
+        print!("POSSIBLE");
+    } else {
+        print!("IMPOSSIBLE");
+    }
+}
