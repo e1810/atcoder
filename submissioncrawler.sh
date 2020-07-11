@@ -42,6 +42,8 @@ get_extension(){
   esac
 }
 
+git config --global user.name e1810
+git config --global user.email e1810@s.akashi.ac.jp
 username="y61mpnl"
 
 exists=()
