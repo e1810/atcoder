@@ -1,0 +1,17 @@
+use proconio::{input, fastout};
+
+#[fastout]
+fn main() {
+    input!{
+        (n, h, w): (i32, i32, i32),
+        ab: [(i32, i32); n]
+    };
+    
+    let mut ans = 0;
+    for (a, b) in ab {
+        if(a>=h && b>=w){
+            ans += 1;
+        }
+    }
+    println!("{}", ans);
+}
