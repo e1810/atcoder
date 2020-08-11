@@ -1,0 +1,10 @@
+use proconio::{input, fastout};
+
+#[fastout]
+fn main() {
+    input!{
+        (a, b): (i64, i64)       
+    };
+
+    println!("{}", a * b / num::integer::gcd(a, b));
+}
