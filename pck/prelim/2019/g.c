@@ -1,11 +1,12 @@
 #include<stdio.h>
+typedef unsigned long long ll;
 
-int gcd(int a, int b){
-	int tmp;
-	if(a>b){
+ll gcd(ll a, ll b){
+	ll tmp;
+	if(a<b){
 		tmp = a;
 		a = b;
-		b = a;
+		b = tmp;
 	}
 	while(b){
 		tmp = a;
@@ -15,30 +16,30 @@ int gcd(int a, int b){
 	return a;
 }
 
-int lcm(int a, int b){
-	return a*b / gcd(a, b);
+ll lcm(ll a, ll b){
+	return a / gcd(a, b) * b;
 }
 
 
-int main(void){
-	int n; scanf("%d", &n);
-	int a[n], i;
-	for(i=0; i<n; i++) scanf("%d", &a[i]);
+ll main(void){
+	ll n; scanf("%llu", &n);
+	ll a[n], i;
+	for(i=0; i<n; i++) scanf("%llu", &a[i]);
 
-	int ans = 0;
+	ll ans = 0;
 	for(i=1; i<(1<<n); i++){
-		int tmp=1, j;
+		ll tmp=1, j;
 		for(j=0; j<n; j++){
 			if((i>>j)&1) tmp = lcm(tmp, a[j]);
 		}
-		int can = 1;
+		ll can = 1;
 		for(j=0; j<n; j++){
 			if(((i>>j)&1)==0 && tmp%a[j]==0) can = 0;
 		}
 		ans += can;
 	}
 
-	printf("%d\n", ans);
+	printf("%llu\n", ans);
 	return 0;
 }
 
