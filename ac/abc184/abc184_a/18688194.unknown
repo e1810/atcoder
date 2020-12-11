@@ -1,0 +1,7 @@
+use proconio::{input, fastout};
+
+#[fastout]
+fn main() {
+	input!((a, b, c, d): (i32, i32, i32, i32));
+	println!("{}", a*d-b*c);
+}
