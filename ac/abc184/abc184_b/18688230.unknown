@@ -1,0 +1,18 @@
+use proconio::{input, fastout};
+
+#[fastout]
+fn main() {
+	input!{
+		(n, x): (i32, i32),
+		s: String
+	};
+	let mut ans = x;
+	for c in s.bytes() {
+		if c==b'o' {
+			ans += 1;
+		} else if ans>0 {
+			ans -= 1;
+		}
+	}
+	println!("{}", ans);
+}
