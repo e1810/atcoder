@@ -1,0 +1,29 @@
+use proconio::{input, fastout};
+
+#[fastout]
+fn main() {
+	input!(n: i32);
+
+	let mut ans = 0;
+	for i in 1..n+1 {
+		let mut ok = true;
+		let mut x = i;
+		while x>0 {
+			if x%10==7 {
+				ok = false;
+			}
+			x /= 10;
+		}
+		x = i;
+		while x>0 {
+			if x%8==7 {
+				ok = false;
+			}
+			x /= 8;
+		}
+		if ok {
+			ans += 1;
+		}
+	}
+	println!("{}", ans);
+}
