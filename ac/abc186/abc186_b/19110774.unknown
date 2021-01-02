@@ -1,0 +1,23 @@
+use proconio::{input, fastout};
+
+#[fastout]
+fn main() {
+    input!{
+        (h, w): (usize, usize),
+		fie: [[i64; w]; h],
+    };
+	let mut min = 1e9 as i64;
+	for i in 0..h {
+		for j in 0..w{
+			min = std::cmp::min(min, fie[i][j]);
+		}
+	}
+	
+	let mut ans: i64 = 0;
+	for i in 0..h {
+		for j in 0..w{
+			ans += fie[i][j] - min;
+		}
+	}
+	println!("{}", ans);
+}
