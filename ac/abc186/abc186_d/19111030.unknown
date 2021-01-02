@@ -1,0 +1,22 @@
+use proconio::{input, fastout};
+
+#[fastout]
+fn main() {
+    input!{
+        n: usize,
+		mut a: [i64; n],
+    };
+	a.sort();
+
+	let mut sum: i64 = 0;
+	for i in 0..n {
+		sum += a[i];
+	}
+
+	let mut ans: i64 = 0;
+	for i in 0..n {
+		ans += sum - a[i] * (n-i) as i64;
+		sum -= a[i];
+	}
+	println!("{}", ans);
+}
